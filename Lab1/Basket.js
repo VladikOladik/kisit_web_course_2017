@@ -12,7 +12,7 @@ class ProductLineItem {
 	constructor(product) {
 		this.name = product.name;
 		this.quantity = 1;
-		this.price = product.price * this.quantity;
+		this.price = product.price;
 	}
 	
 	getName(){
@@ -38,11 +38,11 @@ var basket = (function(){
 		addProduct : function(productID){
             var exists = false;
             
-            buy.forEach(function(item, i, buy){
+            buy.forEach(function(item){
                 exists = (item.getName() == products[productID].name) ? true : false;            
             });
             if(exists) alert("TOVAR EST YJE");
-            else buy[buy.length] = new ProductLineItem(products[productID]);
+            else buy.push(new ProductLineItem(products[productID]));
 		},
 		removeProduct : function(productID){
 			buy.forEach(function(item, i, buy){
@@ -50,7 +50,7 @@ var basket = (function(){
             })
 		},
 		updateProductQuantity : function(productID, quantity) {
-			buy.forEach(function(item, i, buy){
+			buy.forEach(function(item){
                 if(item.getName() == products[productID].name) {
                     item.setQuantity(quantity);
             }})
@@ -58,7 +58,7 @@ var basket = (function(){
 		getTotalPrice : function(){
 			var tp = 0;
             
-            buy.forEach(function(item, i, buy){
+            buy.forEach(function(item){
                 tp+=item.getPrice();
             })
             return tp;
