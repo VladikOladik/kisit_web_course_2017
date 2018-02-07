@@ -1,13 +1,21 @@
 var i = 1;
+
 var availableForms = [{
 		id : i++,
 		name : 'default form which asks to enter name',
 		fields : [{
-			id : 'name',
-			type : 'string'
+			id1 : 'name',
+			type1 : 'string',
+			id2 : 'age',
+			type2 : 'string'
 		}]
 	}],
-	submittedForms = [];
+	submittedForms = [
+		/*id : j++,
+		fields : [{
+			id : 'name',
+			value : 'string'*/
+	];
 
 module.exports = {
 	getAvailableForms : function(){
@@ -23,12 +31,14 @@ module.exports = {
 	submitForm : function(req) {
 		var id = req.param('formID'),
 			form = this.getForm(id),
-			formObj = {};
-		for(let i = 0; i < form.fields.length; i++){
-			formObj[form.fields[i].id] = req.param(form.fields[i].id);
-		}
+			formObj = {
+				id1 : form.fields[0].id1,
+				value1 : req.body.name,
+				id2 : form.fields[0].id2,
+				value2 : req.body.age
+			};
 		
-		submittedForms.push({id : id, result : formObj});
+		submittedForms.push({id : id, fields : formObj});
 		console.log(submittedForms);
 	},
 	getSubmittedForms : function(){
@@ -41,4 +51,4 @@ module.exports = {
 			}
 		}
 	}
-};
+}
