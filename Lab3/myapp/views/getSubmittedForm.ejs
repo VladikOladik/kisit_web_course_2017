@@ -4,18 +4,15 @@
     <title>Check form</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
-  <script type="text/javascript">
-  	var key;
-  </script>
   <body>
-    <h1><%= form.name %></h1>
+    <h1><%= form.id %></h1>
 	<form>
-		<% for(var i = 0; i < form.result.length; i++) { %>
 			<div>
-				<%= key = form.result[i].id %>
-				<%= form.reuslt[i].key %>
+				<%= form.fields.id1 %>
+				<%= form.fields.value1 %><br>
+				<%= form.fields.id2 %>
+				<%= form.fields.value2 %>
 			</div>
-		<% } %>
 		<input type="hidden" name="formID" value="<%= form.id%>">
 		<a href="/admin">Back</a>
 	</form>
