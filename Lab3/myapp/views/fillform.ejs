@@ -9,8 +9,10 @@
 	<form action="/sendForm" method="POST">
 		<% for(var i = 0; i < form.fields.length; i++) { %>
 			<div>
-				<%= form.fields[i].id %>
-				<input name='<%= form.fields[i].id %>'/>
+				<%= form.fields[i].id1 %>
+				<input name='<%= form.fields[i].id1 %>'/><br>
+				<%= form.fields[i].id2 %>
+				<input name='<%= form.fields[i].id2 %>'/>
 			</div>
 		<% } %>
 		<input type="hidden" name="formID" value="<%= form.id%>">
