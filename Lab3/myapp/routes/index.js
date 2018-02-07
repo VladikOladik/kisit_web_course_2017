@@ -33,8 +33,8 @@ router.post('/sendForm', urlencodedParser, function(req, res){
 });
 
 router.get('/admin/getSubmittedForm', function(req, res){
-	res.render('checkSubmittedForm', {
-		form : forms.getForm(req.param('formID'))
+	res.render('getSubmittedForm', {
+		form : forms.getSubmittedForm(req.param('formID'))
 	})
 })
 
