@@ -1,4 +1,4 @@
-var i = 1;
+var i = 1, j = 1;
 
 var availableForms = [{
 		id : i++,
@@ -7,6 +7,16 @@ var availableForms = [{
 			id1 : 'name',
 			type1 : 'string',
 			id2 : 'age',
+			type2 : 'string'
+		}]
+	},
+	{
+		id : i++,
+		name : 'another form',
+		fields : [{
+			id1 : 'ur company',
+			type1 : 'string',
+			id2 : 'some word',
 			type2 : 'string'
 		}]
 	}],
@@ -33,12 +43,12 @@ module.exports = {
 			form = this.getForm(id),
 			formObj = {
 				id1 : form.fields[0].id1,
-				value1 : req.body.name,
+				value1 : req.body.value1,
 				id2 : form.fields[0].id2,
-				value2 : req.body.age
+				value2 : req.body.value2
 			};
 		
-		submittedForms.push({id : id, fields : formObj});
+		submittedForms.push({id : j++, fields : formObj});
 		console.log(submittedForms);
 	},
 	getSubmittedForms : function(){
